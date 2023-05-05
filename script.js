@@ -44,17 +44,18 @@ END:VEVENT
 END:VCALENDAR`;
 
   // Blob mit den Daten erstellen
-  let blob = new Blob([icsData], { type: "text/calendar" });
+  let blob = new Blob([icsData], { type: "text/calendar;charset=utf-8" });
 
   // URL zum Download des Blobs erstellen
   let url = URL.createObjectURL(blob);
 
   // Link zum Download des Kalenderereignisses erstellen und klicken
   let link = document.createElement("a");
-  link.href = url;
-  link.download = `${title}.ics`;
-  document.body.appendChild(link);
-  link.click();
+  link.href = URL.createObjectURL(blob);
+  link.setAttribute("download", "event.ics");
+  link.setAttribute("target", "_blank");
+  link.setAttribute("rel", "noopener noreferrer");
+  link.dispatchEvent(new MouseEvent("click"));
 
   // Blob und URL wieder freigeben
   URL.revokeObjectURL(url);
