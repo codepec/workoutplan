@@ -17,55 +17,66 @@ chooseLanguage.addEventListener("change", function () {
 });
 
 // Funktion zum Hinzufügen eines Termins
-
 function addCalendarEvent(title) {
   // Datum erstellen
-
   let date = new Date();
 
   // Daten für das Kalenderereignis
-
   let eventData = {
     title: title,
-
     start: date,
-
     end: date,
   };
 
   // WebCal API aufrufen
-
   if (navigator.webcal) {
     navigator.webcal
-
       .saveEvent(eventData)
-
       .then(() => {
-        console.log("Ereignis wurde erfolgreich im Kalender gespeichert!");
+        alert("Ereignis wurde erfolgreich im Kalender gespeichert!");
       })
-
       .catch((error) => {
-        console.error("Fehler beim Speichern des Ereignisses: ", error);
+        alert("Fehler beim Speichern des Ereignisses: " + error.message);
       });
   } else {
-    console.error("WebCal API wird von diesem Browser nicht unterstützt!");
+    alert("WebCal API wird von diesem Browser nicht unterstützt!");
   }
 }
 
 // Event-Listener für Brust-Button
-
 document.getElementById("brust").addEventListener("click", function () {
-  addCalendarEvent("Training Tag 1 - Brust - erfolgreich absolviert.");
+  addCalendarEvent("Brust");
 });
 
 // Event-Listener für Rücken-Button
-
 document.getElementById("ruecken").addEventListener("click", function () {
-  addCalendarEvent("Training Tag 2 - Beine - erfolgreich absolviert.");
+  addCalendarEvent("Rücken");
 });
 
 // Event-Listener für Ganzkörper-Button
-
 document.getElementById("ganzkoerper").addEventListener("click", function () {
-  addCalendarEvent("Training Tag 3 - Ganzkörper - erfolgreich absolviert.");
+  addCalendarEvent("Ganzkörper");
 });
+
+// Überprüfe, ob WebCal API verfügbar ist
+if (!navigator.webcal) {
+  alert("WebCal API wird von diesem Browser nicht unterstützt!");
+}
+
+// Überprüfe, ob Berechtigungen vorhanden sind
+if (navigator.permissions) {
+  navigator.permissions.query({ name: "calendar" }).then((permission) => {
+    if (permission.state === "denied") {
+      alert("Keine Berechtigung zum Speichern von Ereignissen im Kalender!");
+    }
+  });
+}
+
+// Überprüfe, ob es Probleme beim Speichern von Ereignissen gibt
+window.addEventListener(
+  "error",
+  function (event) {
+    alert("Fehler beim Speichern des Ereignisses: " + event.error.message);
+  },
+  true
+);
