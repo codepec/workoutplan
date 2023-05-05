@@ -1,3 +1,16 @@
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function () {
+    navigator.serviceWorker
+      .register("/service-worker.js")
+      .then(function (registration) {
+        console.log("Service Worker registriert: ", registration);
+      })
+      .catch(function (error) {
+        console.log("Service Worker Registrierung fehlgeschlagen: ", error);
+      });
+  });
+}
+
 const workoutDays = document.getElementById("workoutDays");
 
 workoutDays.addEventListener("change", function () {

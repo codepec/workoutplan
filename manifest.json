@@ -3,10 +3,20 @@
   "short_name": "Workout DB",
   "theme_color": "#fff",
   "background_color": "#fff",
-  "display": "standalone",
+  "display": "fullscreen",
   "orientation": "portrait",
   "scope": "/",
   "start_url": "https://codepec.github.io/workoutplan",
+  "serviceworker": {
+    "src": "/service-worker.js",
+    "name": "MyServiceWorker",
+    "events": {
+      "fetch": true,
+      "push": true,
+      "install": true,
+      "activate": true
+    }
+  },
   "icons": [
     {
       "src": "images/icons/icon-72x72.png",
