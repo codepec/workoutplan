@@ -9,8 +9,8 @@ self.addEventListener("activate", function (event) {
 });
 
 // Caches für statische Assets und API-Aufrufe erstellen
-const staticCacheName = "static-cache-v1";
-const apiCacheName = "api-cache-v1";
+const staticCacheName = "static-cache-v2";
+const apiCacheName = "api-cache-v2";
 
 // Assets und API-Aufrufe cachen
 self.addEventListener("fetch", function (event) {
