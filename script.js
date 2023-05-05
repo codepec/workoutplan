@@ -17,66 +17,66 @@ chooseLanguage.addEventListener("change", function () {
 });
 
 // Funktion zum Hinzufügen eines Termins
-function addCalendarEvent(title) {
-  // Datum erstellen
-  let date = new Date();
+function addCalendarEvent(title, description, location, start, end) {
+  // Daten für das Kalenderereignis im iCalendar-Format
+  let icsData = `BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+SUMMARY:${title}
+DESCRIPTION:${description}
+LOCATION:${location}
+DTSTART:${start.toISOString()}
+DTEND:${end.toISOString()}
+END:VEVENT
+END:VCALENDAR`;
 
-  // Daten für das Kalenderereignis
-  let eventData = {
-    title: title,
-    start: date,
-    end: date,
-  };
+  // Blob mit den Daten erstellen
+  let blob = new Blob([icsData], { type: "text/calendar" });
 
-  // WebCal API aufrufen
-  if (navigator.webcal) {
-    navigator.webcal
-      .saveEvent(eventData)
-      .then(() => {
-        alert("Ereignis wurde erfolgreich im Kalender gespeichert!");
-      })
-      .catch((error) => {
-        alert("Fehler beim Speichern des Ereignisses: " + error.message);
-      });
-  } else {
-    alert("WebCal API wird von diesem Browser nicht unterstützt!");
-  }
+  // URL zum Download des Blobs erstellen
+  let url = URL.createObjectURL(blob);
+
+  // Link zum Download des Kalenderereignisses erstellen und klicken
+  let link = document.createElement("a");
+  link.href = url;
+  link.download = `${title}.ics`;
+  document.body.appendChild(link);
+  link.click();
+
+  // Blob und URL wieder freigeben
+  URL.revokeObjectURL(url);
+  document.body.removeChild(link);
 }
 
 // Event-Listener für Brust-Button
 document.getElementById("brust").addEventListener("click", function () {
-  addCalendarEvent("Brust");
+  let title = "Brust";
+  let description = "Trainingseinheit für die Brustmuskulatur";
+  let location = "Fitnessstudio";
+  let start = new Date();
+  let end = new Date();
+  end.setHours(start.getHours() + 1); // Ende 1 Stunde später
+  addCalendarEvent(title, description, location, start, end);
 });
 
 // Event-Listener für Rücken-Button
 document.getElementById("ruecken").addEventListener("click", function () {
-  addCalendarEvent("Rücken");
+  let title = "Rücken";
+  let description = "Trainingseinheit für den Rücken";
+  let location = "Fitnessstudio";
+  let start = new Date();
+  let end = new Date();
+  end.setHours(start.getHours() + 1); // Ende 1 Stunde später
+  addCalendarEvent(title, description, location, start, end);
 });
 
 // Event-Listener für Ganzkörper-Button
 document.getElementById("ganzkoerper").addEventListener("click", function () {
-  addCalendarEvent("Ganzkörper");
+  let title = "Ganzkörper";
+  let description = "Trainingseinheit für den ganzen Körper";
+  let location = "Fitnessstudio";
+  let start = new Date();
+  let end = new Date();
+  end.setHours(start.getHours() + 2); // Ende 2 Stunden später
+  addCalendarEvent(title, description, location, start, end);
 });
-
-// Überprüfe, ob WebCal API verfügbar ist
-if (!navigator.webcal) {
-  alert("WebCal API wird von diesem Browser nicht unterstützt!");
-}
-
-// Überprüfe, ob Berechtigungen vorhanden sind
-if (navigator.permissions) {
-  navigator.permissions.query({ name: "calendar" }).then((permission) => {
-    if (permission.state === "denied") {
-      alert("Keine Berechtigung zum Speichern von Ereignissen im Kalender!");
-    }
-  });
-}
-
-// Überprüfe, ob es Probleme beim Speichern von Ereignissen gibt
-window.addEventListener(
-  "error",
-  function (event) {
-    alert("Fehler beim Speichern des Ereignisses: " + event.error.message);
-  },
-  true
-);
