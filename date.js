@@ -39,7 +39,23 @@ function saveICal() {
   let description = eventDescription;
   let start = new Date();
   let end = new Date(start.getTime() + 60 * 60 * 1000); // Ende 1 Stunde später
-  addCalendarEvent(title, description, "", start, end);
+  let url =
+    `data:text/calendar;charset=utf-8,` +
+    `BEGIN:VCALENDAR\n` +
+    `VERSION:2.0\n` +
+    `BEGIN:VEVENT\n` +
+    `SUMMARY:${title}\n` +
+    `DESCRIPTION:${description}\n` +
+    `DTSTART:${start.toISOString().replace(/-|:|\.\d+/g, "")}\n` +
+    `DTEND:${end.toISOString().replace(/-|:|\.\d+/g, "")}\n` +
+    `END:VEVENT\n` +
+    `END:VCALENDAR\n`;
+  let downloadLink = document.createElement("a");
+  downloadLink.href = url;
+  downloadLink.download = `${title}.ics`;
+  document.body.appendChild(downloadLink);
+  downloadLink.click();
+  document.body.removeChild(downloadLink);
 }
 
 // Funktion zum Speichern des Termins im Google Calendar
