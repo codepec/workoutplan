@@ -1,0 +1,14 @@
+{
+  "folders": [
+	{
+		"path": "../workoutplan"
+	},
+	{
+		"name": "workoutplan",
+		"path": "../workoutplan/workoutplan"
+	}
+],
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "workoutplan"
+  }
+}

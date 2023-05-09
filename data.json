@@ -1,0 +1,93 @@
+{
+  "data_1_3": [
+    {
+      "exercise": "Kurzhantel Bankdrücken",
+      "sets": "3",
+      "repetitions": "8-10"
+    },
+    {
+      "exercise": "Kurzhantel Fliegende",
+      "sets": "3",
+      "repetitions": "10-12"
+    },
+    {
+      "exercise": "Kurzhantel Rudern",
+      "sets": "3",
+      "repetitions": "8-10"
+    },
+    {
+      "exercise": "Kurzhantel Bizepscurls",
+      "sets": "3",
+      "repetitions": "10-12"
+    },
+    {
+      "exercise": "Trizeps-Extensions mit Stretchband",
+      "sets": "3",
+      "repetitions": "12-15"
+    },
+    {
+      "exercise": "Klimmzüge",
+      "sets": "3",
+      "repetitions": "so viele wie möglich"
+    }
+  ],
+  "data_2_3": [
+    {
+      "exercise": "Kurzhantel-Kniebeugen",
+      "sets": "3",
+      "repetitions": "8-10"
+    },
+    {
+      "exercise": "Ausfallschritte mit Kurzhanteln",
+      "sets": "3",
+      "repetitions": "10-12 pro Bein"
+    },
+    {
+      "exercise": "Kurzhantel-Sumo-Kniebeugen",
+      "sets": "3",
+      "repetitions": "10-12"
+    },
+    {
+      "exercise": "Kurzhantel-Rumänisches Kreuzheben",
+      "sets": "3",
+      "repetitions": "10-12"
+    },
+    {
+      "exercise": "Wadenheben auf der Kante mit Kurzhanteln",
+      "sets": "3",
+      "repetitions": "12-15"
+    }
+  ],
+  "data_3_3": [
+    {
+      "exercise": "Kurzhantel-Kreuzheben",
+      "sets": "3",
+      "repetitions": "8-10"
+    },
+    {
+      "exercise": "Kurzhantel Schulterdrücken",
+      "sets": "3",
+      "repetitions": "10-12"
+    },
+    {
+      "exercise": "Kurzhantel Ausfallschritte mit Überkopf-Presse",
+      "sets": "3",
+      "repetitions": "10-12 pro Bein"
+    },
+    {
+      "exercise": "Kurzhantel Bizepscurls",
+      "sets": "3",
+      "repetitions": "10-12"
+    },
+    {
+      "exercise": "Trizeps-Extensions mit Stretchband",
+      "sets": "3",
+      "repetitions": "12-15"
+    },
+    {
+      "exercise": "Klimmzüge",
+      "sets": "3",
+      "repetitions": "so viele wie möglich"
+    }
+  ]
+}
