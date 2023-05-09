@@ -31,12 +31,13 @@ function addCalendarEvent(title, description, location, start, end) {
 }
 
 let eventTitle = "Tag 1 - Brust Training";
+let eventDescription = "Erstelle dir eine stählerne Brust";
 
 // Funktion zum Speichern des Termins als iCalendar-Datei
 function saveICal() {
   let title = eventTitle;
-  let description = document.getElementById("eventDescription").value;
-  let start = new Date(document.getElementById("eventDate").value);
+  let description = eventDescription;
+  let start = new Date();
   let end = new Date(start.getTime() + 60 * 60 * 1000); // Ende 1 Stunde später
   addCalendarEvent(title, description, "", start, end);
 }
