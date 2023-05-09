@@ -39,10 +39,6 @@
 
     <body>
 
-
-
-
-
      <h1>Trainingsplan</h1>
 
         <div class="right">
@@ -52,6 +48,17 @@
                 <option id="english">English</option>
             </select>
         </div>
+
+        <div class="container">
+          <label>Trainingsart wählen: </label>
+          <select id="workout">
+          
+          <option id="mass">Massephase</option>
+          <option id="definition">Definitonsphase</option>
+          <option id="both" selected>Beides</option>  
+
+          </select>
+      </div>
 
         <div class="container">
             <label>Anzahl Trainingstage pro Woche wählen: </label>
@@ -94,11 +101,9 @@
         
           <label for="eventDescription">Beschreibung:</label>
           <textarea id="eventDescription" name="eventDescription"></textarea><br><br>
-        
-          <button onclick="saveEvent()">Termin speichern</button>
-        
+               
           <div class="dropdown">
-            <button onclick="myFunction()" class="dropbtn">Format auswählen</button>
+            <button onclick="myFunction()" class="dropbtn">Speichern</button>
             <div id="myDropdown" class="dropdown-content">
               <a onclick="saveICal()">iCalendar</a>
               <a onclick="saveGoogle()">Google Calendar</a>
