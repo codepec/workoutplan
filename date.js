@@ -41,21 +41,22 @@ function saveICal() {
   let end = new Date(start.getTime() + 60 * 60 * 1000); // Ende 1 Stunde später
   let url =
     `data:text/calendar;charset=utf-8,` +
-    `BEGIN:VCALENDAR\n` +
-    `VERSION:2.0\n` +
-    `BEGIN:VEVENT\n` +
-    `SUMMARY:${title}\n` +
-    `DESCRIPTION:${description}\n` +
-    `DTSTART:${start.toISOString().replace(/-|:|\.\d+/g, "")}\n` +
-    `DTEND:${end.toISOString().replace(/-|:|\.\d+/g, "")}\n` +
-    `END:VEVENT\n` +
-    `END:VCALENDAR\n`;
-  let downloadLink = document.createElement("a");
-  downloadLink.href = url;
-  downloadLink.download = `${title}.ics`;
-  document.body.appendChild(downloadLink);
-  downloadLink.click();
-  document.body.removeChild(downloadLink);
+    `BEGIN:VCALENDAR%0A` +
+    `VERSION:2.0%0A` +
+    `PRODID:Calendar%0A` +
+    `BEGIN:VEVENT%0A` +
+    `UID:${Math.random().toString(36).substring(2, 15)}%0A` +
+    `DTSTAMP:${new Date().toISOString()}%0A` +
+    `DTSTART:${start.toISOString()}%0A` +
+    `DTEND:${end.toISOString()}%0A` +
+    `SUMMARY:${title}%0A` +
+    `DESCRIPTION:${description}%0A` +
+    `END:VEVENT%0A` +
+    `END:VCALENDAR%0A`;
+  let link = document.createElement("a");
+  link.setAttribute("href", url);
+  link.setAttribute("download", `${title}.ics`);
+  link.click();
 }
 
 // Funktion zum Speichern des Termins im Google Calendar
