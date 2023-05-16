@@ -31,32 +31,14 @@ function addCalendarEvent(title, description, location, start, end) {
 }
 
 let eventTitle = "Tag 1 - Brust Training";
-let eventDescription = "Erstelle dir eine stählerne Brust";
 
 // Funktion zum Speichern des Termins als iCalendar-Datei
 function saveICal() {
   let title = eventTitle;
-  let description = eventDescription;
-  let start = new Date();
+  let description = document.getElementById("eventDescription").value;
+  let start = new Date(document.getElementById("eventDate").value);
   let end = new Date(start.getTime() + 60 * 60 * 1000); // Ende 1 Stunde später
-  let url =
-    `data:text/calendar;charset=utf-8,` +
-    `BEGIN:VCALENDAR%0A` +
-    `VERSION:2.0%0A` +
-    `PRODID:Calendar%0A` +
-    `BEGIN:VEVENT%0A` +
-    `UID:${Math.random().toString(36).substring(2, 15)}%0A` +
-    `DTSTAMP:${new Date().toISOString()}%0A` +
-    `DTSTART:${start.toISOString()}%0A` +
-    `DTEND:${end.toISOString()}%0A` +
-    `SUMMARY:${title}%0A` +
-    `DESCRIPTION:${description}%0A` +
-    `END:VEVENT%0A` +
-    `END:VCALENDAR%0A`;
-  let link = document.createElement("a");
-  link.setAttribute("href", url);
-  link.setAttribute("download", `${title}.ics`);
-  link.click();
+  addCalendarEvent(title, description, "", start, end);
 }
 
 // Funktion zum Speichern des Termins im Google Calendar

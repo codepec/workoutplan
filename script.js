@@ -37,4 +37,3 @@ chooseLanguage.addEventListener("change", function () {
     }
   }
 
-

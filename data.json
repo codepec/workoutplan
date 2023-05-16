@@ -3,91 +3,108 @@
     {
       "exercise": "Kurzhantel Bankdrücken",
       "sets": "3",
-      "repetitions": "8-10"
+      "repetitions": "10",
+      "weight": "20"
     },
     {
       "exercise": "Kurzhantel Fliegende",
       "sets": "3",
-      "repetitions": "10-12"
+      "repetitions": "12",
+      "weight": "12"
     },
     {
       "exercise": "Kurzhantel Rudern",
       "sets": "3",
-      "repetitions": "8-10"
+      "repetitions": "10",
+      "weight": "16"
     },
     {
       "exercise": "Kurzhantel Bizepscurls",
       "sets": "3",
-      "repetitions": "10-12"
+      "repetitions": "12",
+      "weight": "12"
     },
     {
       "exercise": "Trizeps-Extensions mit Stretchband",
       "sets": "3",
-      "repetitions": "12-15"
+      "repetitions": "15",
+      "weight": "8"
     },
     {
       "exercise": "Klimmzüge",
       "sets": "3",
-      "repetitions": "so viele wie möglich"
+      "repetitions": "5",
+      "weight": "80"
     }
   ],
   "data_2_3": [
     {
       "exercise": "Kurzhantel-Kniebeugen",
       "sets": "3",
-      "repetitions": "8-10"
+      "repetitions": "10",
+      "weight": "20"
     },
     {
       "exercise": "Ausfallschritte mit Kurzhanteln",
       "sets": "3",
-      "repetitions": "10-12 pro Bein"
+      "repetitions": "20",
+      "weight": "20"
     },
     {
       "exercise": "Kurzhantel-Sumo-Kniebeugen",
       "sets": "3",
-      "repetitions": "10-12"
+      "repetitions": "12",
+      "weight": "20"
     },
     {
       "exercise": "Kurzhantel-Rumänisches Kreuzheben",
       "sets": "3",
-      "repetitions": "10-12"
+      "repetitions": "12",
+      "weight": "20"
     },
     {
       "exercise": "Wadenheben auf der Kante mit Kurzhanteln",
       "sets": "3",
-      "repetitions": "12-15"
+      "repetitions": "15",
+      "weight": "20"
     }
   ],
   "data_3_3": [
     {
       "exercise": "Kurzhantel-Kreuzheben",
       "sets": "3",
-      "repetitions": "8-10"
+      "repetitions": "10",
+      "weight": "20"
     },
     {
       "exercise": "Kurzhantel Schulterdrücken",
       "sets": "3",
-      "repetitions": "10-12"
+      "repetitions": "12",
+      "weight": "20"
     },
     {
       "exercise": "Kurzhantel Ausfallschritte mit Überkopf-Presse",
       "sets": "3",
-      "repetitions": "10-12 pro Bein"
+      "repetitions": "20",
+      "weight": "20"
     },
     {
       "exercise": "Kurzhantel Bizepscurls",
       "sets": "3",
-      "repetitions": "10-12"
+      "repetitions": "12",
+      "weight": "20"
     },
     {
       "exercise": "Trizeps-Extensions mit Stretchband",
       "sets": "3",
-      "repetitions": "12-15"
+      "repetitions": "15",
+      "weight": "20"
     },
     {
       "exercise": "Klimmzüge",
       "sets": "3",
-      "repetitions": "so viele wie möglich"
+      "repetitions": "10",
+      "weight": "20"
     }
   ]
 }

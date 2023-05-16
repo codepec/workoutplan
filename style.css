@@ -6,7 +6,7 @@ body{
 
     padding:20px;
     border-radius: 15px;
-    background-color: cadetblue;
+    background-color: rgb(146, 188, 189);
     margin:5px;
 }
 
@@ -32,6 +32,7 @@ table, th, td {
     max-width: 550px;
     background-color: rgb(189, 207, 207);
 }
+
 
 /* Dropdown Button */
 .dropbtn {
@@ -79,5 +80,87 @@ table, th, td {
   
   /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
   .show {display:block;}
+  
+  span{
+    margin:2px;
+  }
+  
+
+
+
+  /* Allgemeine Button-Stile */
+#plus-rep-button, #plus-weight-button {
+  background-color: #245b96; /* Blaue Hintergrundfarbe */
+  color: #ffffff; /* Weiße Textfarbe */
+  border: none;
+  margin:1px;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Button-Stile für iOS */
+@media (max-width: 414px) {
+  /* iPhone-Breite */
+  #plus-rep-button, #plus-weight-button {
+    background-color: #ffffff; /* Weißer Hintergrund */
+    color: #245b96; /* Blaue Textfarbe */
+    border: 1px solid #245b96; /* Blauer Rand */
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+}
+
+  
+  /* Allgemeine Button-Stile */
+  #minus-rep-button, #minus-weight-button {
+    background-color: #245b9689; /* Blaue Hintergrundfarbe */
+    color: #ffffff; /* Weiße Textfarbe */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    margin:1px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  /* Button-Stile für iOS */
+  @media (max-width: 414px) {
+    /* iPhone-Breite */
+    #minus-rep-button, #minus-weight-button {
+      background-color: #ffffff; /* Weißer Hintergrund */
+      color: #245b96; /* Blaue Textfarbe */
+      border: 1px solid #245b96; /* Blauer Rand */
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+  }
+
+  .rep-value, .weight-value {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #99e4ff; /* Hintergrundfarbe */
+    color: #000000; /* Textfarbe */
+    padding: 4px 8px; /* Innenabstand */
+    border-radius: 4px; /* Eckenradius */
+    font-size: 16px; /* Schriftgröße */
+    font-weight: bold; /* Schriftgewicht */
+  }
+  
+  .set-cell {
+
+    text-align: center;
+    color: #000000;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+  }
   
   
