@@ -2,22 +2,37 @@ const workoutChoose = document.getElementById("workoutChoose");
 
 workoutChoose.addEventListener("change", function () {
   if (workoutChoose.value === "fullbodyWorkout") {
-    console.log("hello fullbody");
     // Display fullbody workout data
     document.getElementById("fullbodyWorkout_data").style.display = "block";
-    document.getElementById("threeSplitWorkout_data").style.display = "none";
+    document.getElementById("threeSplitWorkout1_data").style.display = "none";
+    document.getElementById("threeSplitWorkout2_data").style.display = "none";
+    document.getElementById("threeSplitWorkout3_data").style.display = "none";
     document.getElementById("fiveSplitWorkout_data").style.display = "none";
-  } else if (workoutChoose.value === "threeSplitWorkout") {
-    console.log("hello 3-split");
+  } else if (workoutChoose.value === "threeSplitWorkout1") {
     // Display 3-split workout data
     document.getElementById("fullbodyWorkout_data").style.display = "none";
-    document.getElementById("threeSplitWorkout_data").style.display = "block";
+    document.getElementById("threeSplitWorkout1_data").style.display = "block";
+    document.getElementById("threeSplitWorkout2_data").style.display = "none";
+    document.getElementById("threeSplitWorkout3_data").style.display = "none";
+    document.getElementById("fiveSplitWorkout_data").style.display = "none";
+  } else if (workoutChoose.value === "threeSplitWorkout2") {
+    document.getElementById("fullbodyWorkout_data").style.display = "none";
+    document.getElementById("threeSplitWorkout1_data").style.display = "none";
+    document.getElementById("threeSplitWorkout2_data").style.display = "block";
+    document.getElementById("threeSplitWorkout3_data").style.display = "none";
+    document.getElementById("fiveSplitWorkout_data").style.display = "none";
+  } else if (workoutChoose.value === "threeSplitWorkout3") {
+    document.getElementById("fullbodyWorkout_data").style.display = "none";
+    document.getElementById("threeSplitWorkout1_data").style.display = "none";
+    document.getElementById("threeSplitWorkout2_data").style.display = "none";
+    document.getElementById("threeSplitWorkout3_data").style.display = "block";
     document.getElementById("fiveSplitWorkout_data").style.display = "none";
   } else if (workoutChoose.value === "fiveSplitWorkout") {
-    console.log("hello 5-split");
     // Display 5-split workout data
     document.getElementById("fullbodyWorkout_data").style.display = "none";
-    document.getElementById("threeSplitWorkout_data").style.display = "none";
+    document.getElementById("threeSplitWorkout1_data").style.display = "none";
+    document.getElementById("threeSplitWorkout2_data").style.display = "none";
+    document.getElementById("threeSplitWorkout3_data").style.display = "none";
     document.getElementById("fiveSplitWorkout_data").style.display = "block";
   } else {
     alert("Workout-Pläne werden noch erstellt.");

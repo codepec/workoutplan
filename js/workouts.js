@@ -206,9 +206,23 @@ fetch(url)
           "Aufwärmen: 5 Minuten auf der Gymnastikmatte, Dehnung des ganzen Körpers mit Stretchbändern.",
         className: "fullbody",
       },
-      threeSplitWorkout: {
-        data: data.data_threeSplit,
-        title: "3-Split Training",
+      threeSplitWorkout1: {
+        data: data.data_threeSplit_one,
+        title: "3-Split Training (Teil 1: Brust)",
+        description:
+          "Aufwärmen: 5 Minuten auf der Gymnastikmatte, Dehnung des oberen Rückens, Schultern und Brust mit Stretchbändern.",
+        className: "threeSplit",
+      },
+      threeSplitWorkout2: {
+        data: data.data_threeSplit_two,
+        title: "3-Split Training (Teil 2: Beine)",
+        description:
+          "Aufwärmen: 5 Minuten auf der Gymnastikmatte, Dehnung des oberen Rückens, Schultern und Brust mit Stretchbändern.",
+        className: "threeSplit",
+      },
+      threeSplitWorkout3: {
+        data: data.data_threeSplit_three,
+        title: "3-Split Training (Teil 3: Schulter)",
         description:
           "Aufwärmen: 5 Minuten auf der Gymnastikmatte, Dehnung des oberen Rückens, Schultern und Brust mit Stretchbändern.",
         className: "threeSplit",

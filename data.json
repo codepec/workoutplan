@@ -1,106 +1,123 @@
 {
-  "data_threeSplit": [
+  "data_threeSplit_one": [
     {
+      "title": "Brust",
       "exercise": "Kurzhantel Bankdrücken",
       "sets": "3",
       "repetitions": "10",
       "weight": "20"
     },
     {
+      "title": "Brust",
       "exercise": "Kurzhantel Fliegende",
       "sets": "3",
       "repetitions": "12",
       "weight": "12"
     },
     {
+      "title": "Brust",
       "exercise": "Kurzhantel Rudern",
       "sets": "3",
       "repetitions": "10",
       "weight": "16"
     },
     {
+      "title": "Brust",
       "exercise": "Kurzhantel Bizepscurls",
       "sets": "3",
       "repetitions": "12",
       "weight": "12"
     },
     {
+      "title": "Brust",
       "exercise": "Trizeps-Extensions mit Stretchband",
       "sets": "3",
       "repetitions": "15",
       "weight": "8"
     },
     {
+      "title": "Brust",
       "exercise": "Klimmzüge",
       "sets": "3",
       "repetitions": "5",
       "weight": "80"
     }
   ],
-  "data_2_3": [
+  "data_threeSplit_two": [
     {
+      "title": "Beine",
       "exercise": "Kurzhantel-Kniebeugen",
       "sets": "3",
       "repetitions": "10",
       "weight": "20"
     },
     {
+      "title": "Beine",
       "exercise": "Ausfallschritte mit Kurzhanteln",
       "sets": "3",
       "repetitions": "20",
       "weight": "20"
     },
     {
+      "title": "Beine",
       "exercise": "Kurzhantel-Sumo-Kniebeugen",
       "sets": "3",
       "repetitions": "12",
       "weight": "20"
     },
     {
+      "title": "Beine",
       "exercise": "Kurzhantel-Rumänisches Kreuzheben",
       "sets": "3",
       "repetitions": "12",
       "weight": "20"
     },
     {
+      "title": "Beine",
       "exercise": "Wadenheben auf der Kante mit Kurzhanteln",
       "sets": "3",
       "repetitions": "15",
       "weight": "20"
     }
   ],
-  "data_3_3": [
+  "data_threeSplit_three": [
     {
+      "title": "Rücken",
       "exercise": "Kurzhantel-Kreuzheben",
       "sets": "3",
       "repetitions": "10",
       "weight": "20"
     },
     {
+      "title": "Rücken",
       "exercise": "Kurzhantel Schulterdrücken",
       "sets": "3",
       "repetitions": "12",
       "weight": "20"
     },
     {
+      "title": "Rücken",
       "exercise": "Kurzhantel Ausfallschritte mit Überkopf-Presse",
       "sets": "3",
       "repetitions": "20",
       "weight": "20"
     },
     {
+      "title": "Rücken",
       "exercise": "Kurzhantel Bizepscurls",
       "sets": "3",
       "repetitions": "12",
       "weight": "20"
     },
     {
+      "title": "Rücken",
       "exercise": "Trizeps-Extensions mit Stretchband",
       "sets": "3",
       "repetitions": "15",
       "weight": "20"
     },
     {
+      "title": "Rücken",
       "exercise": "Klimmzüge",
       "sets": "3",
       "repetitions": "10",
@@ -109,48 +126,56 @@
   ],
   "data_fullbody": [
     {
+      "title": "Gesamtkörper",
       "exercise": "Kurzhantel-Brankdrücken",
       "sets": "3",
       "repetitions": "6",
       "weight": "24"
     },
     {
+      "title": "Gesamtkörper",
       "exercise": "Kurzhantel Stirndrücken",
       "sets": "3",
       "repetitions": "6",
       "weight": "20"
     },
     {
+      "title": "Gesamtkörper",
       "exercise": "Hammercurls",
       "sets": "3",
       "repetitions": "6",
       "weight": "16"
     },
     {
+      "title": "Gesamtkörper",
       "exercise": "Einarmiges Kurzhantel-Rudern",
       "sets": "3",
       "repetitions": "6",
       "weight": "20"
     },
     {
+      "title": "Gesamtkörper",
       "exercise": "Kurzhantel-Kreuzheben",
       "sets": "3",
       "repetitions": "6",
       "weight": "26"
     },
     {
+      "title": "Gesamtkörper",
       "exercise": "Kurzhantel-Kniebeugen",
       "sets": "3",
       "repetitions": "6",
       "weight": "20"
     },
     {
+      "title": "Gesamtkörper",
       "exercise": "Kurzhantel-Ausfallschritt",
       "sets": "3",
       "repetitions": "6",
       "weight": "20"
     },
     {
+      "title": "Gesamtkörper",
       "exercise": "Criss-Cross / Käfer",
       "sets": "4",
       "repetitions": "12",
