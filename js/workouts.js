@@ -32,7 +32,7 @@ const createTable = (
   tableContainer.appendChild(table);
 
   const workoutContainer = document.getElementById(containerId);
-  workoutContainer.innerHTML = "";
+  workoutContainer.textContent = "";
   workoutContainer.appendChild(tableContainer);
 };
 
