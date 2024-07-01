@@ -9,17 +9,34 @@ const createTable = (
   containerId
 ) => {
   const tableContainer = document.createElement("div");
-  tableContainer.className = `container ${className}`; // Setze die Klasse des Containers basierend auf dem Workout-Typ
+  tableContainer.className = `container ${className}`;
   tableContainer.style.display = "flex";
   tableContainer.style.flexDirection = "column";
   tableContainer.style.alignItems = "center";
   tableContainer.style.justifyContent = "center";
-  // Höhe des Containers auf volle Bildschirmhöhe gesetzt
 
   const table = document.createElement("table");
   table.className = "mytable";
 
-  // Create table headers
+  createTableHeader(table);
+  populateTableRows(table, data, containerId);
+
+  const h2 = document.createElement("h2");
+  h2.textContent = workoutTitle;
+
+  const p = document.createElement("p");
+  p.textContent = workoutDescription;
+
+  tableContainer.appendChild(h2);
+  tableContainer.appendChild(p);
+  tableContainer.appendChild(table);
+
+  const workoutContainer = document.getElementById(containerId);
+  workoutContainer.innerHTML = "";
+  workoutContainer.appendChild(tableContainer);
+};
+
+const createTableHeader = (table) => {
   const tableHeaders = ["Übung", "Sätze", "Wdh", "Gewicht"];
   const headerRow = document.createElement("tr");
   tableHeaders.forEach((header) => {
@@ -27,145 +44,111 @@ const createTable = (
     th.textContent = header;
     headerRow.appendChild(th);
   });
-
-  // Append headers to the table
   table.appendChild(headerRow);
+};
 
-  // Append data rows to the table
+const populateTableRows = (table, data, containerId) => {
   data.forEach((entry) => {
     const row = document.createElement("tr");
     const exerciseCell = document.createElement("td");
     const setsCell = document.createElement("td");
     const repetitionsCell = document.createElement("td");
     const weightCell = document.createElement("td");
-    const plusRepButton = document.createElement("button");
-    const minusRepButton = document.createElement("button");
-    const repValue = document.createElement("span");
-    const plusWeightButton = document.createElement("button");
-    const minusWeightButton = document.createElement("button");
-    const weightValue = document.createElement("span");
     let weight = entry.weight || 0;
     let reps = entry.repetitions || 0;
 
-    setsCell.setAttribute("class", "set-cell");
-    repValue.setAttribute("class", "rep-value");
-    weightValue.setAttribute("class", "weight-value");
-    plusRepButton.classList.add("plus-rep-button");
-    minusRepButton.classList.add("minus-rep-button");
-    plusWeightButton.classList.add("plus-weight-button");
-    minusWeightButton.classList.add("minus-weight-button");
-
+    setsCell.className = "set-cell";
     exerciseCell.textContent = entry.exercise;
     setsCell.textContent = entry.sets;
-    repValue.textContent = reps;
-    weightValue.textContent = weight;
-    plusRepButton.textContent = "+";
-    minusRepButton.textContent = "-";
-    plusWeightButton.textContent = "+";
-    minusWeightButton.textContent = "-";
 
-    plusRepButton.addEventListener("click", () => {
-      reps = parseInt(repValue.textContent, 10); // Text in Zahl umwandeln
-      reps += 1; // Erhöhe die Anzahl der Wiederholungen um 1
-      repValue.textContent = reps;
-      saveInputsToLocalStorage(
-        containerId,
-        entry.exercise,
-        setsCell.textContent,
-        reps,
-        weight
-      );
-    });
+    const repContainer = createCounterContainer(
+      reps,
+      containerId,
+      entry,
+      setsCell,
+      "rep"
+    );
+    const weightContainer = createCounterContainer(
+      weight,
+      containerId,
+      entry,
+      setsCell,
+      "weight"
+    );
 
-    minusRepButton.addEventListener("click", () => {
-      reps = parseInt(repValue.textContent, 10); // Text in Zahl umwandeln
-      reps = Math.max(reps - 1, 0); // Verringere die Anzahl der Wiederholungen um 1, aber nicht unter 0
-      repValue.textContent = reps;
-      saveInputsToLocalStorage(
-        containerId,
-        entry.exercise,
-        setsCell.textContent,
-        reps,
-        weight
-      );
-    });
+    repetitionsCell.appendChild(repContainer);
+    weightCell.appendChild(weightContainer);
 
-    plusWeightButton.addEventListener("click", () => {
-      weight = parseInt(weightValue.textContent, 10); // Text in Zahl umwandeln
-      weight += 1; // Erhöhe das Gewicht um 1
-      weightValue.textContent = weight;
-      saveInputsToLocalStorage(
-        containerId,
-        entry.exercise,
-        setsCell.textContent,
-        reps,
-        weight
-      );
-    });
-
-    minusWeightButton.addEventListener("click", () => {
-      weight = parseInt(weightValue.textContent, 10); // Text in Zahl umwandeln
-      weight = Math.max(weight - 1, 0); // Verringere das Gewicht um 1, aber nicht unter 0
-      weightValue.textContent = weight;
-      saveInputsToLocalStorage(
-        containerId,
-        entry.exercise,
-        setsCell.textContent,
-        reps,
-        weight
-      );
-    });
-
-    // Append repetition controls
-    const repContainer = document.createElement("div");
-    repContainer.appendChild(plusRepButton);
-    repContainer.appendChild(minusRepButton);
-    repContainer.style.display = "flex";
-    repContainer.style.flexDirection = "row";
-    repContainer.style.alignItems = "center";
-    const repValueContainer = document.createElement("div");
-    repValueContainer.appendChild(repValue);
-    repValueContainer.appendChild(repContainer);
-    repetitionsCell.appendChild(repValueContainer);
-
-    // Append weight controls
-    const weightContainer = document.createElement("div");
-    weightContainer.appendChild(plusWeightButton);
-    weightContainer.appendChild(minusWeightButton);
-    weightContainer.style.display = "flex";
-    weightContainer.style.flexDirection = "row";
-    weightContainer.style.alignItems = "center";
-    const weightValueContainer = document.createElement("div");
-    weightValueContainer.appendChild(weightValue);
-    weightValueContainer.appendChild(weightContainer);
-    weightCell.appendChild(weightValueContainer);
-
-    // Append cells to the row
     row.appendChild(exerciseCell);
     row.appendChild(setsCell);
     row.appendChild(repetitionsCell);
     row.appendChild(weightCell);
 
-    // Append row to the table
     table.appendChild(row);
   });
+};
 
-  // Create and append title and description
-  const h2 = document.createElement("h2");
-  h2.textContent = workoutTitle;
+const createCounterContainer = (
+  initialValue,
+  containerId,
+  entry,
+  setsCell,
+  type
+) => {
+  const valueContainer = document.createElement("div");
+  const value = document.createElement("span");
+  const plusButton = document.createElement("button");
+  const minusButton = document.createElement("button");
 
-  const p = document.createElement("p");
-  p.textContent = workoutDescription;
+  value.className = `${type}-value`;
+  value.textContent = initialValue;
+  plusButton.textContent = "+";
+  minusButton.textContent = "-";
 
-  // Append all elements to the container
-  tableContainer.appendChild(h2);
-  tableContainer.appendChild(p);
-  tableContainer.appendChild(table);
+  plusButton.classList.add(`plus-${type}-button`);
+  minusButton.classList.add(`minus-${type}-button`);
 
-  // Clear previous content and append new container to specified element
-  const workoutContainer = document.getElementById(containerId);
-  workoutContainer.innerHTML = ""; // Clear previous content
-  workoutContainer.appendChild(tableContainer);
+  plusButton.addEventListener("click", () => {
+    updateValue(value, 1, containerId, entry, setsCell, type);
+  });
+
+  minusButton.addEventListener("click", () => {
+    updateValue(value, -1, containerId, entry, setsCell, type);
+  });
+
+  valueContainer.appendChild(plusButton);
+  valueContainer.appendChild(value);
+  valueContainer.appendChild(minusButton);
+
+  valueContainer.style.display = "flex";
+  valueContainer.style.flexDirection = "column";
+  valueContainer.style.alignItems = "center";
+
+  return valueContainer;
+};
+
+const updateValue = (
+  valueElement,
+  increment,
+  containerId,
+  entry,
+  setsCell,
+  type
+) => {
+  let value = parseInt(valueElement.textContent, 10);
+  value = Math.max(value + increment, 0);
+  valueElement.textContent = value;
+  saveInputsToLocalStorage(
+    containerId,
+    entry.exercise,
+    setsCell.textContent,
+    type === "rep"
+      ? value
+      : parseInt(valueElement.nextElementSibling.textContent, 10),
+    type === "weight"
+      ? value
+      : parseInt(valueElement.nextElementSibling.textContent, 10)
+  );
 };
 
 const saveInputsToLocalStorage = (
@@ -176,20 +159,8 @@ const saveInputsToLocalStorage = (
   weight
 ) => {
   const savedData = localStorage.getItem(containerId);
-  let data;
-  if (savedData) {
-    data = JSON.parse(savedData);
-  } else {
-    data = {};
-  }
-
-  if (!data[exercise]) {
-    data[exercise] = {};
-  }
-  data[exercise].sets = sets;
-  data[exercise].reps = reps;
-  data[exercise].weight = weight;
-
+  let data = savedData ? JSON.parse(savedData) : {};
+  data[exercise] = { sets, reps, weight };
   localStorage.setItem(containerId, JSON.stringify(data));
   console.log(data);
 };
