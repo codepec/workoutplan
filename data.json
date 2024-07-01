@@ -1,5 +1,5 @@
 {
-  "data_1_3": [
+  "data_threeSplit": [
     {
       "exercise": "Kurzhantel Bankdrücken",
       "sets": "3",
@@ -105,6 +105,56 @@
       "sets": "3",
       "repetitions": "10",
       "weight": "20"
+    }
+  ],
+  "data_fullbody": [
+    {
+      "exercise": "Kurzhantel-Brankdrücken",
+      "sets": "3",
+      "repetitions": "6",
+      "weight": "24"
+    },
+    {
+      "exercise": "Kurzhantel Stirndrücken",
+      "sets": "3",
+      "repetitions": "6",
+      "weight": "20"
+    },
+    {
+      "exercise": "Hammercurls",
+      "sets": "3",
+      "repetitions": "6",
+      "weight": "16"
+    },
+    {
+      "exercise": "Einarmiges Kurzhantel-Rudern",
+      "sets": "3",
+      "repetitions": "6",
+      "weight": "20"
+    },
+    {
+      "exercise": "Kurzhantel-Kreuzheben",
+      "sets": "3",
+      "repetitions": "6",
+      "weight": "26"
+    },
+    {
+      "exercise": "Kurzhantel-Kniebeugen",
+      "sets": "3",
+      "repetitions": "6",
+      "weight": "20"
+    },
+    {
+      "exercise": "Kurzhantel-Ausfallschritt",
+      "sets": "3",
+      "repetitions": "6",
+      "weight": "20"
+    },
+    {
+      "exercise": "Criss-Cross / Käfer",
+      "sets": "4",
+      "repetitions": "12",
+      "weight": "0"
     }
   ]
 }

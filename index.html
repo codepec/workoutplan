@@ -1,115 +1,105 @@
 <!doctype html>
 <html lang="de">
   <head>
-    <title>Trainingsplan</title>
+    <title>Iron insanity</title>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
- 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-
     <meta name="description" content="">
-    <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
-    <script type="text/javascript" src="script.js" defer></script>
-    <script type="text/javascript" src="workouts.js" defer></script>
-    <script type="text/javascript" src="date.js" defer></script>
-    <!-- dev
-      <script type="text/javascript" src="sw.js" defer></script>
-    -->
-    <script type="text/javascript" src="sw.js" defer></script>
-
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/navbar.css">
     <link rel="manifest" href="/manifest.json">
-
-    <link rel="apple-touch-icon" href="/images\icons\icon-192x192.png"/>
-    <link rel="apple-touch-icon" sizes="72x72" href="/images\icons\icon-72x72.png"/>
-    <link rel="apple-touch-icon" sizes="96x96" href="/images\icons\icon-96x96.png"/>
-    <link rel="apple-touch-icon" sizes="128x128" href="/images\icons\icon-128x128.png"/>
-    <link rel="apple-touch-icon" sizes="144x144" href="/images\icons\icon-144x144.png"/>
-    <link rel="apple-touch-icon" sizes="152x152" href="/images\icons\icon-152x152.png"/>
-    <link rel="apple-touch-icon" sizes="192x192" href="/images\icons\icon-192x192.png"/>
-    <link rel="apple-touch-icon" sizes="384x384" href="/images\icons\icon-384x384.png"/>  
-    <link rel="apple-touch-icon" sizes="512x512" href="/images\icons\icon-512x512.png"/> 
+    <link rel="apple-touch-icon" href="./images/icons/icon-192x192.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="./images/icons/icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="96x96" href="./images/icons/icon-96x96.png"/>
+    <link rel="apple-touch-icon" sizes="128x128" href="./images/icons/icon-128x128.png"/>
+    <link rel="apple-touch-icon" sizes="144x144" href="./images/icons/icon-144x144.png"/>
+    <link rel="apple-touch-icon" sizes="152x152" href="./images/icons/icon-152x152.png"/>
+    <link rel="apple-touch-icon" sizes="192x192" href="./images/icons/icon-192x192.png"/>
+    <link rel="apple-touch-icon" sizes="384x384" href="./images/icons/icon-384x384.png"/>  
+    <link rel="apple-touch-icon" sizes="512x512" href="./images/icons/icon-512x512.png"/> 
     <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" sizes="96x96" href="images/icons/icon-96x96.png" />
-    <link rel="icon" type="image/png" sizes="128x128" href="images/icons/icon-128x128.png" />
 
-   
+
+    <link rel="icon" type="image/png" sizes="96x96" href="./images/icons/icon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="128x128" href="./images/icons/icon-128x128.png" />
+    <link rel="icon" type="image/png" sizes="192x192"  href="./images/icons/icon-192x192.png"/>
+
+
+  
+  
+  
+  
+
+
 
   </head>
 
-    <body>
+  <body>
 
-
-
-
-
-     <h1>Trainingsplan</h1>
-
-        <div class="right">
-            <label>Choose language: </label>
-            <select id="chooseLanguage">
-                <option id="german">German</option>
-                <option id="english">English</option>
-            </select>
+    <nav class="navbar">
+      <div class="navbar-left" style="display: none">
+        <label for="languageSelect">Choose language:</label>
+        <select id="languageSelect" onchange="changeLanguage()">
+          <option value="en">English</option>
+          <option value="de">Deutsch</option>
+        </select>
+      </div>
+      <div class="navbar-right">
+        <select id="navDropdown" class="mobile-dropdown">
+          <option value="./index" selected>Home</option>
+          <option value="./pages/settings.html">Settings</option>
+          <option value="./pages/instructions.html">Get Started</option>
+        </select>
+        <div class="desktop-menu">
+          <ul>
+            <li>
+              <div class="darkmode-container" style="display: none">
+                <p class="margin-right">Dark Mode</p>
+                <input type="checkbox" id="darkModeToggle" onchange="toggleDarkMode()">
+                <label for="darkModeToggle"></label>
+              </div>
+            </li>
+            <li id="home"><a href="#">Home</a></li>
+            <li id="settings"><a href="./pages/settings.html">Settings</a></li>
+            <li id="instructions"><a href="./pages/instructions.html">Get Started</a></li>
+          </ul>
         </div>
+      </div>
+    </nav>
 
-        <div class="container">
-            <label>Anzahl Trainingstage pro Woche wählen: </label>
-            <select id="workoutDays">
-            
-            <option id="oneDay">1 Tag</option>
-            <option id="twoDays">2 Tage</option>
-            <option id="threeDays" selected>3 Tage</option>  
-            <option id="fourDays">4 Tage</option>  
-            <option id="fiveDays">5 Tage</option>  
-            <option id="sixDays">6 Tage</option>  
-            <option id="fullWeek">jeden Wochentag</option>  
-            </select>
-        </div>
+
+    <h1>Iron insanity</h1>
+
+
+    <div class="container">
+      <label>Trainingswahl: </label>
+      <select id="workoutChoose">
+        <option value="fullbodyWorkout">Ganzkörper</option>
+        <option value="threeSplitWorkout">3-Split</option>
+        <option value="fiveSplitWorkout">5-Split</option>  
+      </select>
+    </div>
+
+    <div class="container">
+
+    <div id="fullbodyWorkout_data" style="display:none;"></div>
+    <div id="threeSplitWorkout_data" style="display:none;"></div>
+    <div id="fiveSplitWorkout_data" style="display:none;"></div>
+
+    </div>
     
-          <div class="container">
-            <div id="monitor"></div>
-                  <div id="dayOne_WorkoutPlan"></div>
-                  <p>Tag 1 absolviert</p>
-                  <button id="brust" onclick="saveICal()">Training in Kalender speichern</button>   
-                  <button>Training speichern</button>
-
-          </div>
-          <div class="container">
-                  <div id="dayTwo_WorkoutPlan"></div>
-                  <p>Tag 2 absolviert</p>
-                  <button id="ruecken">Training in Kalender speichern</button>
-                  <button >Training speichern</button>   
-          </div>
-          <div class="container">
-                  <div id="dayThree_WorkoutPlan"></div>
-                  <p>Tag 3 absolviert</p>
-                  <button id="ganzkoerper">Training in Kalender speichern</button>
-                  <button>Training speichern</button>   
-          </div>     
- 
-
-          <label for="eventTitle">Titel:</label>
-          <input type="text" id="eventTitle" name="eventTitle"><br><br>
-        
-          <label for="eventDate">Datum:</label>
-          <input type="datetime-local" id="eventDate" name="eventDate"><br><br>
-        
-          <label for="eventDescription">Beschreibung:</label>
-          <textarea id="eventDescription" name="eventDescription"></textarea><br><br>
-        
-          <button onclick="saveEvent()">Termin speichern</button>
-        
-          <div class="dropdown">
-            <button onclick="myFunction()" class="dropbtn">Format auswählen</button>
-            <div id="myDropdown" class="dropdown-content">
-              <a onclick="saveICal()">iCalendar</a>
-              <a onclick="saveGoogle()">Google Calendar</a>
-              <a onclick="saveOutlook()">Outlook</a>
-            </div>
-          </div>
-
-      <footer> created by CodePec</footer>
+    <div class="container">
+      <button>Training erfolgreich absolviert</button>
+    </div>
 
 
-    </body>
+
+
+    <footer> created by CodePec</footer>
+
+    <script type="text/javascript" src="./js/script.js" defer></script>
+    <script type="text/javascript" src="./js/workouts.js" defer></script>
+    <script type="text/javascript" src="./js/date.js" defer></script>
+  </body>
 </html>

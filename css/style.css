@@ -1,0 +1,157 @@
+:root {
+  --primary-color: #5bce5e; /* Intensiver Grünton */
+  --secondary-color: #f0f0f0; /* Hellgrau */
+  --background-dark: #363636; /* Dunkelgrau */
+  --background-light: #505050; /* Mittelgrau */
+  --text-light: #f0f0f0; /* Hellgrau */
+  --text-dark: #333333; /* Dunkelgrau */
+}
+
+body {
+  font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  color: var(--text-light);
+  line-height: 1.6;
+  background-color: var(--background-dark);
+}
+
+.container {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: var(--background-light);
+  margin: 5px;
+  text-align: center;
+  align-items: center;
+}
+
+h1 {
+  text-align: center;
+  color: var(--primary-color);
+}
+
+.right {
+  text-align: right;
+}
+
+footer {
+  text-align: center;
+  color: var(--primary-color);
+}
+
+table,
+th,
+td {
+  text-align: left;
+  border: 1px solid var(--text-dark);
+  border-collapse: collapse;
+  padding: 8px;
+  max-width: 550px;
+  background-color: var(--background-dark);
+  color: var(--secondary-color);
+}
+
+.dropbtn {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  padding: 5px;
+  font-size: 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 15px;
+}
+
+.dropbtn:hover,
+.dropbtn:focus {
+  background-color: #ff6666; /* Hellere rote Hintergrundfarbe */
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: var(--background-light);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(206, 206, 206, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: var(--primary-color);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.show {
+  display: block;
+}
+
+span {
+  margin: 2px;
+}
+
+#plus-rep-button,
+#plus-weight-button,
+#minus-rep-button,
+#minus-weight-button {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  border: none;
+  margin: 1px;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.plus-rep-button, .minus-rep-button, .plus-weight-button, .minus-weight-button {
+  border:1px solid black;
+  border-radius: 10px;
+  width:30px;
+  height:30px;
+}
+
+@media (max-width: 414px) {
+  #plus-rep-button,
+  #plus-weight-button,
+  #minus-rep-button,
+  #minus-weight-button {
+    background-color: var(--background-light);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+}
+
+.rep-value,
+.weight-value {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-color);
+  color: var(--text-dark);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.set-cell {
+  text-align: center;
+  color: var(--primary-color);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+}
