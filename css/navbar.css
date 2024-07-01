@@ -40,7 +40,7 @@
   }
   
   .navbar-right ul li a {
-    color: black;
+    color: white;
     text-decoration: none;
     padding: 14px 16px;
     display: block;
@@ -63,7 +63,7 @@
       padding: 8px;
       border: none;
       border-radius: 5px;
-      background-color: #5bce5e;
+
       color: black;
       cursor: pointer;
       font-size: 14px;
