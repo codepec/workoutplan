@@ -6,6 +6,7 @@
   --text-light: #f0f0f0; /* Light gray text */
   --text-dark: #ffffff; /* White text */
   --error-color: #ff6666; /* Lighter red background */
+  --error-color: #f74545;
 }
 
 body {
@@ -54,12 +55,12 @@ th,
 td {
   text-align: center;
   border-collapse: collapse;
-  padding: 15px;
-  max-width: 550px;
+  padding: 5px;
   color: var(--secondary-color);
   background-color: var(--background-light);
   box-shadow: 0 4px 8px rgb(0, 0, 0); /* Subtle shadow */
 }
+
 
 .plus-rep-button,
 .plus-weight-button,
@@ -109,14 +110,6 @@ td {
   color: var(--primary-color);
 }
 
-table,
-th,
-td {
-
-  padding: 10px;
-
-}
-
 }
 
 .rep-value,
@@ -139,3 +132,39 @@ td {
   font-weight: bold;
 
 }
+
+.pause-value {
+
+  color: var(--primary-color);
+  padding: 8px 16px;
+
+  font-size: 1.2rem;
+  font-weight: bold;
+
+}
+
+.pauseButton {
+
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+@media (max-width: 414px) {
+  .pauseButton {padding: 15px 5px;}
+}
+
+
+
+
+

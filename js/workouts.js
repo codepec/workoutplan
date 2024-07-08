@@ -37,7 +37,7 @@ const createTable = (
 };
 
 const createTableHeader = (table) => {
-  const tableHeaders = ["Übung", "Sätze", "Wdh", "Gewicht"];
+  const tableHeaders = ["Übung", "Sätze", "Wdh", "Gewicht", "Pause"];
   const headerRow = document.createElement("tr");
   tableHeaders.forEach((header) => {
     const th = document.createElement("th");
@@ -47,15 +47,17 @@ const createTableHeader = (table) => {
   table.appendChild(headerRow);
 };
 
-const populateTableRows = (table, data, containerId) => {
-  data.forEach((entry) => {
+const populateTableRows = async (table, data, containerId) => {
+  for (const entry of data) {
     const row = document.createElement("tr");
     const exerciseCell = document.createElement("td");
     const setsCell = document.createElement("td");
     const repetitionsCell = document.createElement("td");
     const weightCell = document.createElement("td");
+    const pauseCell = document.createElement("td");
     let weight = entry.weight || 0;
     let reps = entry.repetitions || 0;
+    let pause = entry.pause || 60;
 
     setsCell.className = "set-cell";
     exerciseCell.textContent = entry.exercise;
@@ -75,17 +77,100 @@ const populateTableRows = (table, data, containerId) => {
       setsCell,
       "weight"
     );
+    const pauseContainer = await createPauseContainer(pause, entry);
 
     repetitionsCell.appendChild(repContainer);
     weightCell.appendChild(weightContainer);
+    pauseCell.appendChild(pauseContainer);
 
     row.appendChild(exerciseCell);
     row.appendChild(setsCell);
     row.appendChild(repetitionsCell);
     row.appendChild(weightCell);
+    row.appendChild(pauseCell);
 
     table.appendChild(row);
+  }
+};
+
+const createPauseContainer = async (initialPause, entry) => {
+  const pauseContainer = document.createElement("div");
+  const pauseButton = document.createElement("button");
+  const pauseText = document.createElement("span");
+  pauseButton.classList = "pauseButton";
+  pauseButton.textContent = "Start";
+
+  let state = await getWorkoutState(entry.exercise);
+  let countdownInterval;
+
+  const updateButtonColor = () => {
+    const maxSets = parseInt(entry.sets, 10);
+    const completedSets = state;
+
+    if (completedSets === 0) {
+      pauseButton.style.backgroundColor = "#f74545";
+      pauseButton.style.color = "white";
+    } else if (completedSets === maxSets) {
+      pauseButton.style.backgroundColor = "#333";
+      pauseButton.style.color = "#5bce5e";
+      pauseButton.textContent = "Done";
+      pauseButton.disabled = true;
+    } else {
+      const progress = completedSets / maxSets;
+      const hue = 140 - progress * 120; // Verlauf von Grün zu Rot (120° bis 0°)
+      pauseButton.style.backgroundColor = `hsl(${hue}, 100%, 50%)`;
+    }
+  };
+
+  updateButtonColor();
+
+  pauseButton.addEventListener("click", () => {
+    if (pauseButton.textContent === "Start") {
+      pauseButton.style.display = "none"; // Button ausblenden beim Start des Countdowns
+      let remainingTime = initialPause;
+      countdownInterval = setInterval(() => {
+        pauseText.textContent = `${remainingTime}s`;
+        remainingTime -= 1;
+        if (remainingTime < 0) {
+          clearInterval(countdownInterval);
+          pauseButton.style.display = "block"; // Button wieder einblenden nach Abschluss des Countdowns
+          pauseButton.textContent = "Start";
+          state = Math.min(state + 1, entry.sets); // Erhöhe den State bis zur Anzahl der Sets
+          updateButtonColor();
+          saveWorkoutState(entry.exercise, state);
+          pauseText.textContent = ""; // Countdown-Text zurücksetzen
+        }
+      }, 1000);
+    }
   });
+
+  pauseContainer.appendChild(pauseText);
+  pauseContainer.appendChild(pauseButton);
+  return pauseContainer;
+};
+
+const startCountdown = (
+  pauseElement,
+  initialPause,
+  containerId,
+  entry,
+  setsCell,
+  toggleButton
+) => {
+  let time = initialPause;
+
+  const countdown = setInterval(() => {
+    time -= 1;
+    pauseElement.textContent = `${time}s`;
+
+    if (time <= 0) {
+      clearInterval(countdown);
+      pauseElement.textContent = `${initialPause}s`; // Zurücksetzen auf initialen Wert
+      toggleButton.textContent = "Start"; // Zurücksetzen des Button-Texts
+    }
+  }, 1000);
+
+  return countdown;
 };
 
 const createCounterContainer = (
@@ -120,6 +205,9 @@ const createCounterContainer = (
   valueContainer.appendChild(value);
   valueContainer.appendChild(minusButton);
 
+  plusButton.style.display = "none";
+  minusButton.style.display = "none";
+
   valueContainer.style.display = "flex";
   valueContainer.style.flexDirection = "column";
   valueContainer.style.alignItems = "center";
@@ -147,6 +235,9 @@ const updateValue = (
       : parseInt(valueElement.nextElementSibling.textContent, 10),
     type === "weight"
       ? value
+      : parseInt(valueElement.nextElementSibling.textContent, 10),
+    type === "pause"
+      ? value
       : parseInt(valueElement.nextElementSibling.textContent, 10)
   );
 };
@@ -156,11 +247,12 @@ const saveInputsToLocalStorage = (
   exercise,
   sets,
   reps,
-  weight
+  weight,
+  pause
 ) => {
   const savedData = localStorage.getItem(containerId);
   let data = savedData ? JSON.parse(savedData) : {};
-  data[exercise] = { sets, reps, weight };
+  data[exercise] = { sets, reps, weight, pause };
   localStorage.setItem(containerId, JSON.stringify(data));
   console.log(data);
 };
