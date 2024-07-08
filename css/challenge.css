@@ -38,26 +38,7 @@ body {
     flex-wrap: wrap;
 }
 
-@media (max-width: 414px) {
-    .workouts {
-        margin-top: 20px;
-        display: block;
-        justify-content: space-around;
-        flex-wrap: wrap;
-    }
 
-    .workout {
-        background: #333;
-        color: var(--text-light);
-        padding: 20px;
-    
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-        margin-bottom: 20px;
-        position: relative;
-        border-radius: 15px;
-    }
-    
-}
 
 .workout {
     background: #333;
@@ -68,6 +49,27 @@ body {
     margin-bottom: 20px;
     position: relative;
     border-radius: 15px;
+}
+
+@media (max-width: 414px) {
+    .workouts {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    .workout {
+        background: #333;
+        color: var(--text-light);
+        padding: 20px;
+        width: 250px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        position: relative;
+        border-radius: 15px;
+    }
+    
 }
 
 .workout h2 {

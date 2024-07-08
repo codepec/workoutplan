@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iron insanity - It is your Journey</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/challenge.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="navbar-left" style="display: none">
+                <label for="languageSelect">Choose language:</label>
+                <select id="languageSelect" onchange="changeLanguage()">
+                    <option value="en">English</option>
+                    <option value="de">Deutsch</option>
+                </select>
+            </div>
+            <div class="navbar-right">
+                <select id="navDropdown" class="mobile-dropdown">
+                    <option value="../index.html">Home</option>
+                    <option value="./challenge.html" selected>Challenge</option>
+                    <option value="#">Get Started</option>
+                </select>
+                <div class="desktop-menu">
+                    <ul>
+                        <li>
+                            <div class="darkmode-container" style="display: none">
+                                <p class="margin-right">Dark Mode</p>
+                                <input type="checkbox" id="darkModeToggle" onchange="toggleDarkMode()">
+                                <label for="darkModeToggle"></label>
+                            </div>
+                        </li>
+                        <li id="home"><a href="../index.html">Home</a></li>
+                        <li id="challenge"><a href="./challenge.html">Challenge</a></li>
+                        <li id="instructions"><a href="#">Get Started</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <h1>Iron Insanity</h1>
+    </header>
+
+    <section id="showcase">
+        <div class="container">
+            <h1>Deine Reise zur Strandfigur</h1>
+            <p>Trainiere in verschiedenen "Fitness-Städten", erfülle Workouts, sammle Trophäen und steige im Level auf!</p>
+        </div>
+    </section>
+
+    <section id="strength-bar">
+        <div class="container">
+            <h2>Stärkebarometer</h2>
+            <div class="xp-bars" id="xpBars"></div>
+            <div class="xp-info">
+                <p>Erreiche 30 XP für ein Level-Up!</p>
+            </div>
+            <div class="level-info">
+                <p>Aktuelles Level: <span id="currentLevel">1</span></p>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="workouts" id="workoutsContainer">
+            <!-- Dynamische Erstellung der Städte -->
+        </div>
+    </div>
+
+    <script src="../js/challenge.js"></script>
+    
+    <script>
+        document.getElementById("navDropdown").addEventListener("change", function (event) {
+          var selectedOption = event.target.value;
+          window.location.href = selectedOption;
+        });
+      </script>
+</body>
+</html>
