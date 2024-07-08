@@ -1,0 +1,133 @@
+:root {
+    --primary-color: #5bce5e; /* Intense green */
+    --secondary-color: #f0f0f0; /* Light gray */
+    --background-dark: #000000; /* Darker background */
+    --background-light: #202020; /* Dark gray background */
+    --text-light: #f0f0f0; /* Light gray text */
+    --text-dark: #ffffff; /* White text */
+    --error-color: #f74545; /* Lighter red background */
+}
+
+body {
+    font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    color: var(--text-light);
+    line-height: 1.6;
+    background-color: var(--background-dark);
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: linear-gradient(to right, #0f0c29, #302b63, #24243e); /* Gradient background */
+}
+
+#showcase {
+    text-align: center;
+    color: var(--text-dark); /* Adjusted to use var(--text-dark) */
+}
+
+#showcase h1 {
+    margin-bottom: 10px;
+}
+
+.workouts {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.workout {
+    background: #333;
+    color: var(--text-light);
+    padding: 20px;
+    width: 30%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    position: relative;
+    border-radius: 15px;
+}
+
+.workout h2 {
+    border-bottom: 2px solid var(--primary-color); /* Adjusted to use var(--primary-color) */
+    padding-bottom: 10px;
+}
+
+.workout p {
+    font-size: 18px;
+}
+
+.complete {
+    text-decoration: line-through; /* Optional: Durchgestrichener Text für abgeschlossene Aufgaben */
+    color: var(--primary-color);
+    opacity: 0.5; /* Adjusted to use var(--primary-color) */
+}
+
+.xp {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--primary-color); /* Adjusted to use var(--primary-color) */
+    color: var(--text-light);
+    padding: 5px 10px;
+    border-radius: 50%;
+}
+
+button.complete-btn {
+    margin: 10px 0;
+    padding: 10px;
+    background: #35424a;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.xp-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.progress-bar {
+    background-color: var(--secondary-color); /* Adjusted to use var(--secondary-color) */
+    border-radius: 4px;
+    height: 8px;
+    margin-top: 5px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    background-color: #4CAF50; /* Green color for progress */
+    height: 100%;
+    width: 0%;
+    transition: width 0.3s ease; /* Smooth width animation */
+    border-radius: 4px;
+}
+
+.xp-info {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 14px;
+    color: #888;
+}
+
+.xp-fill.level-up {
+    animation: level-up-animation 1s ease-in-out;
+}
+
+@keyframes level-up-animation {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Challenge - Journey zur Strandfigur</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/navbar.css">
+    <link rel="stylesheet" href="./css/challenge.css">
+
+    <style>
+
+
+        /* Stil für die Trophäen neben den Städten */
+        .trophy {
+            display: none;
+            width: 20px;
+            height: 20px;
+            background-color: gold;
+            border-radius: 50%;
+            margin-left: 10px;
+        }
+
+        /* Stil für den Tooltip */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 120px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -60px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="navbar-left" style="display: none">
+                <label for="languageSelect">Choose language:</label>
+                <select id="languageSelect" onchange="changeLanguage()">
+                    <option value="en">English</option>
+                    <option value="de">Deutsch</option>
+                </select>
+            </div>
+            <div class="navbar-right">
+                <select id="navDropdown" class="mobile-dropdown">
+                    <option value="./index" selected>Home</option>
+                    <option value="./pages/challenge.html">Settings</option>
+                    <option value="./pages/instructions.html">Get Started</option>
+                </select>
+                <div class="desktop-menu">
+                    <ul>
+                        <li>
+                            <div class="darkmode-container" style="display: none">
+                                <p class="margin-right">Dark Mode</p>
+                                <input type="checkbox" id="darkModeToggle" onchange="toggleDarkMode()">
+                                <label for="darkModeToggle"></label>
+                            </div>
+                        </li>
+                        <li id="home"><a href="./index.html">Home</a></li>
+                        <li id="challenge"><a href="challenge.html">challenge</a></li>
+                        <li id="instructions"><a href="#">Get Started</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <h1>Iron Insanity</h1>
+    </header>
+
+    <section id="showcase">
+        <div class="container">
+            <h1>Deine Reise zur Strandfigur</h1>
+            <p>Trainiere in verschiedenen "Fitness-Städten", erfülle Workouts, sammle Trophäen und steige im Level auf!</p>
+        </div>
+    </section>
+
+    <section id="strength-bar">
+        <div class="container">
+            <h2>Stärkebarometer</h2>
+            
+            <!-- Hier werden die Fortschrittsbalken für alle Städte dynamisch erstellt -->
+            <div class="xp-bars" id="xpBars">
+                <!-- Hier werden die Fortschrittsbalken für alle Städte durch JavaScript generiert -->
+            </div>
+            
+            <div class="xp-info">
+                <p>Erreiche 30 XP für ein Level-Up!</p>
+            </div>
+    
+            <div class="level-info">
+                <p>Aktuelles Level: <span id="currentLevel">1</span></p>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="workouts">
+            <!-- Dynamische Erstellung der Städte -->
+            <div class="workout" id="city1" data-enabled="true">
+                <h2>Munich<span class="trophy tooltip" title="Trophäe für alle Aufgaben abgeschlossen">🏆</span></h2>
+                <span class="xp">0</span>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="city1-progress"></div>
+                </div>
+                <p class="task1">1. Crush the Oktoberfest with your incredible squats</p>
+                <button class="complete-btn" onclick="completeTask(1, 1)">Abschließen</button>
+                <p class="task2">2. Flex your muscles in the Englischer Garten with pull-ups</p>
+                <button class="complete-btn" onclick="completeTask(1, 2)">Abschließen</button>
+                <p class="task3">3. Sprint through the Munich Airport terminals</p>
+                <button class="complete-btn" onclick="completeTask(1, 3)">Abschließen</button>
+            </div>
+            <div class="workout" id="city2" data-enabled="false">
+                <h2>Barcelona</h2>
+                <span class="xp">0</span>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="city2-progress"></div>
+                </div>
+                <p class="task1">1. Power through a stair climb at the Sagrada Familia</p>
+                <button class="complete-btn" onclick="completeTask(2, 1)">Abschließen</button>
+                <p class="task2">2. Perform beach sprints at Barceloneta</p>
+                <button class="complete-btn" onclick="completeTask(2, 2)">Abschließen</button>
+                <p class="task3">3. Master push-ups in the Park Güell</p>
+                <button class="complete-btn" onclick="completeTask(2, 3)">Abschließen</button>
+            </div>
+            <div class="workout" id="city3" data-enabled="false">
+                <h2>Tokyo</h2>
+                <span class="xp">0</span>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="city3-progress"></div>
+                </div>
+                <p class="task1">1. Conquer the steps to Tokyo Tower</p>
+                <button class="complete-btn" onclick="completeTask(3, 1)">Abschließen</button>
+                <p class="task2">2. Engage in a cardio session through Shinjuku Gyoen Park</p>
+                <button class="complete-btn" onclick="completeTask(3, 2)">Abschließen</button>
+                <p class="task3">3. Stretch and meditate at the Meiji-Schrein</p>
+                <button class="complete-btn" onclick="completeTask(3, 3)">Abschließen</button>
+            </div>
+            <div class="workout" id="city4" data-enabled="false">
+                <h2>New York</h2>
+                <span class="xp">0</span>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="city4-progress"></div>
+                </div>
+                <p class="task1">1. Power walk to the top of the Statue of Liberty</p>
+                <button class="complete-btn" onclick="completeTask(4, 1)">Abschließen</button>
+                <p class="task2">2. Run a lap around Central Park</p>
+                <button class="complete-btn" onclick="completeTask(4, 2)">Abschließen</button>
+                <p class="task3">3. Do jumping jacks at Times Square</p>
+                <button class="complete-btn" onclick="completeTask(4, 3)">Abschließen</button>
+            </div>
+            <div class="workout" id="city5" data-enabled="false">
+                <h2>Paris</h2>
+                <span class="xp">0</span>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="city5-progress"></div>
+                </div>
+                <p class="task1">1. Climb the Eiffel Tower stairs</p>
+                <button class="complete-btn" onclick="completeTask(5, 1)">Abschließen</button>
+                <p class="task2">2. Do lunges at the Louvre</p>
+                <button class="complete-btn" onclick="completeTask(5, 2)">Abschließen</button>
+                <p class="task3">3. Jog along the Seine River</p>
+                <button class="complete-btn" onclick="completeTask(5, 3)">Abschließen</button>
+            </div>
+            <div class="workout" id="city6" data-enabled="false">
+                <h2>London</h2>
+                <span class="xp">0</span>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="city6-progress"></div>
+                </div>
+                <p class="task1">1. Perform push-ups at Buckingham Palace</p>
+                <button class="complete-btn" onclick="completeTask(6, 1)">Abschließen</button>
+                <p class="task2">2. Sprint around the Tower of London</p>
+                <button class="complete-btn" onclick="completeTask(6, 2)">Abschließen</button>
+                <p class="task3">3. Do yoga in Hyde Park</p>
+                <button class="complete-btn" onclick="completeTask(6, 3)">Abschließen</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let totalXP = 0;
+        let currentLevel = 1;
+        let currentCity = 1; // Variable, um die aktuelle Stadt zu verfolgen
+        
+        // Starten mit der ersten Stadt
+        window.onload = function() {
+            createXPBar(); // Erstellt die XP-Balken für alle Städte
+            enableCity(currentCity); // Aktiviert die erste Stadt
+        }
+        
+        function createXPBar() {
+       
+        }
+        
+        function enableCity(cityIndex) {
+            const city = document.getElementById(`city${cityIndex}-xp`);
+            if (city) {
+                city.setAttribute('data-enabled', 'true');
+        
+                // Aktiviere alle Buttons der Stadt
+                const buttons = city.querySelectorAll('.complete-btn');
+                buttons.forEach(button => {
+                    button.disabled = false;
+                });
+            }
+        }
+        
+        function completeTask(cityIndex, taskIndex) {
+            // Logik für das Abschließen der Aufgaben hier
+        
+            // Beispiel: Durchstreichen der erledigten Aufgabe
+            const taskElement = document.querySelector(`#city${cityIndex} .task${taskIndex}`);
+            if (taskElement) {
+                taskElement.classList.add('complete');
+            }
+        
+            addXP(cityIndex, 10); // Beispiel: Füge XP hinzu, wenn eine Aufgabe abgeschlossen wird
+        }
+        
+        
+        function addXP(cityIndex, xpToAdd) {
+            const xpElement = document.querySelector(`#city${cityIndex} .xp`);
+            const progressFill = document.querySelector(`#city${cityIndex}-progress`);
+        
+            // Aktualisiere die XP-Anzeige der Stadt
+            const currentXP = parseInt(xpElement.textContent);
+            const newXP = currentXP + xpToAdd;
+            xpElement.textContent = newXP;
+        
+            // Aktualisiere den Fortschrittsbalken der Stadt
+            const maxXP = 30; // Maximal 30 XP für jede Stadt für ein Level-Up
+            const progressPercentage = (newXP / maxXP) * 100;
+            progressFill.style.width = `${progressPercentage}%`;
+            console.log(cityIndex);
+
+        }
+        
+        
+        function updateStrengthBar() {
+            const overallProgress = document.getElementById('overall-progress');
+            const maxTotalXP = 180; // Beispiel: 180 Gesamt-XP für ein Level-Up
+            const progressPercentage = (totalXP / maxTotalXP) * 100;
+        
+            overallProgress.style.width = `${progressPercentage}%`;
+        
+            if (totalXP >= 30) {
+                levelUp();
+            }
+        }
+        
+        
+        
+        function levelUp() {
+            currentLevel++;
+            document.getElementById('currentLevel').textContent = currentLevel;
+            totalXP = 0; // Setze die gesamten XP zurück, um ein neues Level zu beginnen
+            resetXPBars();
+        
+            // Aktiviere die nächste Stadt, wenn verfügbar
+            currentCity++;
+            enableCity(currentCity);
+        }
+        
+        function resetXPBars() {
+            const progressBar = document.querySelectorAll('.progress-fill');
+            progressBar.forEach(progress => {
+                progress.style.width = '0%';
+            });
+        }
+        
+        function enableCity(cityIndex) {
+            const city = document.getElementById(`city${cityIndex}-xp`);
+            if (city) {
+                city.setAttribute('data-enabled', 'true');
+        
+                // Aktiviere alle Buttons der Stadt
+                const buttons = city.querySelectorAll('.complete-btn');
+                buttons.forEach(button => {
+                    button.disabled = false;
+                });
+            }
+        }
+        
+        // Funktion zum Entsperren der Trophäen für eine bestimmte Stadt
+        function unlockTrophy(cityIndex) {
+            const trophyElement = document.querySelector(`#city${cityIndex}-xp .trophy`);
+            if (trophyElement) {
+                trophyElement.style.display = 'inline-block'; // Sichtbar machen der Trophäe
+            }
+        }
+        
+        // Funktion zum Verbergen der Trophäen für eine bestimmte Stadt
+        function hideTrophy(cityIndex) {
+            const trophyElement = document.querySelector(`#city${cityIndex}-xp .trophy`);
+            if (trophyElement) {
+                trophyElement.style.display = 'none'; // Verbergen der Trophäe
+            }
+        }
+    </script>
+</body>
+</html>
