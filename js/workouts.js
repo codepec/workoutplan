@@ -100,6 +100,13 @@ const createPauseContainer = async (initialPause, entry) => {
   pauseButton.classList = "pauseButton";
   pauseButton.textContent = "Start";
 
+  // Load the audio files
+  const audio4 = new Audio("sounds/break-converted_final.wav");
+  const audio3 = new Audio("sounds/3-converted_final.wav");
+  const audio2 = new Audio("sounds/2-converted_final.wav");
+  const audio1 = new Audio("sounds/1-converted_final.wav");
+  const audio0 = new Audio("sounds/continue2-converted_final.wav");
+
   let state = await getWorkoutState(entry.exercise);
   let countdownInterval;
 
@@ -130,6 +137,20 @@ const createPauseContainer = async (initialPause, entry) => {
       let remainingTime = initialPause;
       countdownInterval = setInterval(() => {
         pauseText.textContent = `${remainingTime}s`;
+
+        // Play countdown sounds
+        if (remainingTime === initialPause) {
+          audio4.play();
+        } else if (remainingTime === 3) {
+          audio3.play();
+        } else if (remainingTime === 2) {
+          audio2.play();
+        } else if (remainingTime === 1) {
+          audio1.play();
+        } else if (remainingTime === 0) {
+          audio0.play();
+        }
+
         remainingTime -= 1;
         if (remainingTime < 0) {
           clearInterval(countdownInterval);
