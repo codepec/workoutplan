@@ -49,7 +49,7 @@ async function saveWorkoutState(workout) {
   }
 }
 
-// Get the workout state
+// Get the latest workout state
 async function getWorkoutState() {
   return new Promise((resolve, reject) => {
     const request = indexedDB.open(dbName, 2); // Increment version if you change schema
@@ -59,13 +59,21 @@ async function getWorkoutState() {
       const transaction = db.transaction([storeName], "readonly");
       const objectStore = transaction.objectStore(storeName);
 
-      const getRequest = objectStore.openCursor();
+      const getRequest = objectStore.openCursor(null, 'next');
+      let lastEntry = null;
+
       getRequest.onsuccess = (event) => {
         const cursor = event.target.result;
         if (cursor) {
-          resolve(cursor.value.workout);
+          lastEntry = cursor.value; // Update lastEntry to the current cursor value
+          cursor.continue(); // Move to the next entry
         } else {
-          resolve(null); // No data found
+          // Resolve with the last entry when no more entries are left
+          if (lastEntry) {
+            resolve(lastEntry.workout);
+          } else {
+            resolve(null); // No data found
+          }
         }
       };
 
@@ -79,3 +87,4 @@ async function getWorkoutState() {
     };
   });
 }
+

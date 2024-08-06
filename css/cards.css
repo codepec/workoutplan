@@ -151,12 +151,7 @@
   }
   
 
-  #workoutCards {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-  }
+
   
 
   
@@ -213,3 +208,34 @@
   margin: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
+
+.back-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1d1d1d; /* White background */
+  color: #007aff; /* iOS blue color */
+  border: none;
+  border-radius: 8px;
+  padding: 10px 15px;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  margin:10px;
+}
+
+.back-button:active {
+  background-color: #e0e0e5; /* Slightly darker on click */
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2); /* Pressed-in shadow */
+  transform: translateY(0); /* Return to original position */
+}
+
+.back-button:focus {
+  outline: none; /* Remove default focus outline */
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.3); /* Custom focus outline */
+}
+
+
+

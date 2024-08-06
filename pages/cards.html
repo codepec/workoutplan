@@ -8,36 +8,17 @@
     <link rel="stylesheet" href="../css/cards.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="navbar-left" style="display: none">
-            <label for="languageSelect">Choose language:</label>
-            <select id="languageSelect" onchange="changeLanguage()">
-                <option value="en">English</option>
-                <option value="de">Deutsch</option>
-            </select>
-        </div>
-        <div class="navbar-right">
-            <select id="navDropdown" class="mobile-dropdown">
-                <option value="../index.html" selected>Home</option>
-                <option value="./challenge.html">Challenge</option>
-                <option value="./instructions.html">Get Started</option>
-            </select>
-            <div class="desktop-menu">
-                <ul>
-                    <li>
-                        <div class="darkmode-container" style="display: none">
-                            <p class="margin-right">Dark Mode</p>
-                            <input type="checkbox" id="darkModeToggle" onchange="toggleDarkMode()">
-                            <label for="darkModeToggle"></label>
-                        </div>
-                    </li>
-                    <li id="home"><a href="../index.html">Home</a></li>
-                    <li id="challenge"><a href="./challenge.html">Challenge</a></li>
-                    <li id="instructions"><a href="#">Get Started</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+
+
+    <button id="backButton" class="back-button">
+        <svg xmlns="http://www.w3.org/2000/svg" class="back-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+        Back
+      </button>
+      
+
+         
 
     <h1>Iron Insanity</h1>
 
@@ -52,12 +33,20 @@
         <div id="workoutCards"></div>
         <div id="workoutChoosen"></div>
     </div>
-    <footer>© 2024 Workout Plan</footer>
+    <footer>created by codepec</footer>
 
     <script src="../js/indexeddb.js"></script>
     <script src="../js/cards.js"></script>
     <script>
+            document.addEventListener("DOMContentLoaded", () => {
+            const backButton = document.getElementById("backButton");
+            if (backButton) {
+                backButton.addEventListener("click", () => {
+                window.location.href = "../index.html"; // Navigate to index.html
+                });
+            }
+            });
 
-    </script>
+      </script>
 </body>
 </html>
