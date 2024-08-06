@@ -6,7 +6,7 @@
       "sets": "3",
       "repetitions": "10",
       "weight": "20",
-      "pause": 60
+      "pause": 5
     },
     {
       "title": "Brust",
@@ -14,7 +14,7 @@
       "sets": "3",
       "repetitions": "12",
       "weight": "12",
-      "pause": 60
+      "pause": 5
     },
     {
       "title": "Brust",
@@ -148,7 +148,7 @@
       "sets": "3",
       "repetitions": "6",
       "weight": "20",
-      "pause": 60
+      "pause": 5
     },
     {
       "title": "Gesamtkörper",
@@ -156,7 +156,7 @@
       "sets": "3",
       "repetitions": "6",
       "weight": "20",
-      "pause": 60
+      "pause": 5
     },
     {
       "title": "Gesamtkörper",
@@ -164,7 +164,7 @@
       "sets": "3",
       "repetitions": "6",
       "weight": "12",
-      "pause": 60
+      "pause": 5
     },
     {
       "title": "Gesamtkörper",

@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <title>Iron insanity - It is your Journey</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="description" content="">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/navbar.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="./images/icons/icon-192x192.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="./images/icons/icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="96x96" href="./images/icons/icon-96x96.png"/>
+    <link rel="apple-touch-icon" sizes="128x128" href="./images/icons/icon-128x128.png"/>
+    <link rel="apple-touch-icon" sizes="144x144" href="./images/icons/icon-144x144.png"/>
+    <link rel="apple-touch-icon" sizes="152x152" href="./images/icons/icon-152x152.png"/>
+    <link rel="apple-touch-icon" sizes="192x192" href="./images/icons/icon-192x192.png"/>
+    <link rel="apple-touch-icon" sizes="384x384" href="./images/icons/icon-384x384.png"/>  
+    <link rel="apple-touch-icon" sizes="512x512" href="./images/icons/icon-512x512.png"/> 
+    <link rel="shortcut icon" href="/favicon.ico">
+
+
+    <link rel="icon" type="image/png" sizes="96x96" href="./images/icons/icon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="128x128" href="./images/icons/icon-128x128.png" />
+    <link rel="icon" type="image/png" sizes="192x192"  href="./images/icons/icon-192x192.png"/>
+
+
+  
+  
+  
+  
+
+
+
+  </head>
+
+  <body>
+
+    <nav class="navbar">
+      <div class="navbar-left" style="display: none">
+        <label for="languageSelect">Choose language:</label>
+        <select id="languageSelect" onchange="changeLanguage()">
+          <option value="en">English</option>
+          <option value="de">Deutsch</option>
+        </select>
+      </div>
+      <div class="navbar-right">
+        <select id="navDropdown" class="mobile-dropdown">
+          <option value="./index" selected>Home</option>
+          <option value="./pages/challenge.html">Challenge</option>
+          <option value="./pages/instructions.html">Get Started</option>
+        </select>
+        <div class="desktop-menu">
+          <ul>
+            <li>
+              <div class="darkmode-container" style="display: none">
+                <p class="margin-right">Dark Mode</p>
+                <input type="checkbox" id="darkModeToggle" onchange="toggleDarkMode()">
+                <label for="darkModeToggle"></label>
+              </div>
+            </li>
+            <li id="home"><a href="#">Home</a></li>
+            <li id="challenge"><a href="./pages/challenge.html">Challenge</a></li>
+            <li id="instructions"><a href="#">Get Started</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <h1>Iron insanity</h1>
+
+
+    <div class="container">
+      <label>Trainingswahl: </label>
+      <select id="workoutChoose">
+        <option value="fullbodyWorkout">Ganzkörper</option>
+        <option value="threeSplitWorkout1">3-Split Teil 1 - Brust</option>
+        <option value="threeSplitWorkout2">3-Split Teil 2 - Beine</option>
+        <option value="threeSplitWorkout3">3-Split Teil 3 - Rücken</option>
+        <option value="fiveSplitWorkout">5-Split</option>  
+      </select>
+    </div>
+
+    <div>
+
+    <div id="fullbodyWorkout_data" style="display:none;"></div>
+    <div id="threeSplitWorkout1_data" style="display:none;"></div>
+    <div id="threeSplitWorkout2_data" style="display:none;"></div>
+    <div id="threeSplitWorkout3_data" style="display:none;"></div>
+    <div id="fiveSplitWorkout_data" style="display:none;"></div>
+
+    </div>
+    
+    <div class="container">
+      <button id="finishTrainingButton">Training erfolgreich absolviert</button>
+    </div>
+
+
+
+
+    <footer> created by CodePec</footer>
+
+    <script type="text/javascript" src="./js/script.js" defer></script>
+    <script type="text/javascript" src="./js/workouts.js" defer></script>
+    <script type="text/javascript" src="./js/date.js" defer></script>
+    <script type="text/javascript" src="./js/indexdb.js" defer></script>
+
+    <script>
+        document.getElementById("navDropdown").addEventListener("change", function (event) {
+          var selectedOption = event.target.value;
+          window.location.href = selectedOption;
+        });
+      </script>
+  </body>
+</html>

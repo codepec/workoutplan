@@ -1,0 +1,95 @@
+:root {
+  --primary-color: #5bce5e; /* Intense green */
+  --secondary-color: #f0f0f0; /* Light gray */
+  --background-dark: #000000; /* Darker background */
+  --background-light: #202020; /* Dark gray background */
+  --text-light: #f0f0f0; /* Light gray text */
+  --text-dark: #ffffff; /* White text */
+  --error-color: #ff6666; /* Lighter red background */
+  --error-color: #f74545;
+}
+
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 10px;
+}
+
+.card {
+  background-color: var(--background-light);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  margin: 20px 10px;
+
+
+}
+
+.title {
+  font-size: 35px;
+  margin-bottom: 10px;
+
+}
+
+.warmup, .description {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+
+
+
+
+
+
+#startTrainingButton {
+  margin: 5px;
+  padding: 10px 20px; /* Adds padding for better spacing */
+  background-color: var(--primary-color); /* A bright pink color for the button */
+  color: var(--background-dark); /* White text for contrast */
+  border: none; /* Remove default border */
+  border-radius: 8px; /* Rounded corners */
+  font-size: 16px; /* Larger font size */
+  font-weight: bold; /* Bold text */
+  cursor: pointer; /* Cursor changes to pointer on hover */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition effects */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
+}
+
+#startTrainingButton:hover {
+background-color: #DC143C; /* Darker pink on hover */
+transform: scale(1.05); /* Slightly enlarges button on hover */
+}
+
+#startTrainingButton:active {
+transform: scale(0.95); /* Shrinks button slightly when pressed */
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Reduces shadow for pressed effect */
+}
+
+
+
+
+
+.goal {
+  color: #DC143C; /* Crimson */
+  text-shadow: 0 0 10px rgba(220, 20, 60, 0.8), 
+               0 0 20px rgba(220, 20, 60, 0.6), 
+               0 0 30px rgba(220, 20, 60, 0.4), 
+               0 0 40px rgba(220, 20, 60, 0.2);
+}
+
+h2{
+  color: #DC143C; /* Crimson */
+  text-shadow: 0 0 10px rgba(220, 20, 60, 0.8), 
+               0 0 20px rgba(220, 20, 60, 0.6), 
+               0 0 30px rgba(220, 20, 60, 0.4), 
+               0 0 40px rgba(220, 20, 60, 0.2);
+}
+
+h1{
+  color: rgb(254, 20, 67);
+}
