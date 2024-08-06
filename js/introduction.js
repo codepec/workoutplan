@@ -195,7 +195,7 @@ function displayWorkoutInfo(title, warmup, frequency, reps, weight, goal, totalS
 
 
 function startWorkout() {
-  window.location.href = "../pages/cards.html";
+  window.location.href = "./pages/cards.html";
 }
 
 
