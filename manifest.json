@@ -1,8 +1,8 @@
 {
   "name": "Workout dumbbells",
   "short_name": "Workout DB",
-  "theme_color": "#fff",
-  "background_color": "#fff",
+  "theme_color": "#00000",
+  "background_color": "#00000",
   "display": "fullscreen",
   "orientation": "portrait-primary",
   "scope": "/",
