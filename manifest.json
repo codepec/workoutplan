@@ -3,7 +3,7 @@
   "short_name": "Workout DB",
   "theme_color": "#fff",
   "background_color": "#fff",
-  "display": "standalone",
+  "display": "fullscreen",
   "orientation": "portrait-primary",
   "scope": "/",
   "start_url": "https://codepec.github.io/workoutplan",
